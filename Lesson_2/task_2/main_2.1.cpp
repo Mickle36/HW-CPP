@@ -31,5 +31,5 @@ int main() {
 
 	change_balance(human);
 
-	std::cout << "¬аш счЄт: " << human.first_name << " " << human.schet << " " << human.balance << std::endl;
+	std::cout << "¬аш счЄт: " << human.first_name << ", " << human.schet << ", " << human.balance << std::endl;
 }
