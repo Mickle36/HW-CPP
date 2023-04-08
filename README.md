@@ -7,3 +7,5 @@
 [Задание № 2.1](https://github.com/Mickle36/HW-CPP/tree/main/Lesson_2/taks_1)
 
 [Задание № 2.2](https://github.com/Mickle36/HW-CPP/tree/main/Lesson_2/task_2)
+
+[Задание № 2.3](https://github.com/Mickle36/HW-CPP/tree/main/Lesson_2/task_3)
