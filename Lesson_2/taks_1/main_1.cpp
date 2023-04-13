@@ -26,44 +26,44 @@ int main() {
 		std::cin >> num_month;
 		months month = static_cast<months>(num_month);
 
-		if (static_cast<int>(month) == 0) {
+		if (month == months::exit) {
 			std::cout << "До свидания!";
 			break;
 		}
-		else if (static_cast<int>(month) == 1) {
+		else if (month == months::Январь) {
 			std::cout << "Январь";
 		}
-		else if (static_cast<int>(month) == 2) {
+		else if (month == months::Февраль) {
 			std::cout << "Февраль";
 		}
-		else if (static_cast<int>(month) == 3) {
+		else if (month == months::Март) {
 			std::cout << "Март";
 		}
-		else if (static_cast<int>(month) == 4) {
+		else if (month == months::Апрель) {
 			std::cout << "Апрель";
 		}
-		else if (static_cast<int>(month) == 5) {
+		else if (month == months::Май) {
 			std::cout << "Май";
 		}
-		else if (static_cast<int>(month) == 6) {
+		else if (month == months::Июнь) {
 			std::cout << "Июнь";
 		}
-		else if (static_cast<int>(month) == 7) {
+		else if (month == months::Июль) {
 			std::cout << "Июль";
 		}
-		else if (static_cast<int>(month) == 8) {
+		else if (month == months::Август) {
 			std::cout << "Август";
 		}
-		else if (static_cast<int>(month) == 9) {
+		else if (month == months::Сентябрь) {
 			std::cout << "Сентябрь";
 		}
-		else if (static_cast<int>(month) == 10) {
+		else if (month == months::Октябрь) {
 			std::cout << "Октябрь";
 		}
-		else if (static_cast<int>(month) == 11) {
+		else if (month == months::Ноябрь) {
 			std::cout << "Ноябрь";
 		}
-		else if (static_cast<int>(month) == 12) {
+		else if (month == months::Декабрь) {
 			std::cout << "Декабрь";
 		}
 		else {std::cout << "Неправильный номер!";}
