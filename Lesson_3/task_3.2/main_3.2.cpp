@@ -85,9 +85,10 @@ int main()
 			else if (val == "x")
 			{
 				std::cout << "Goodbuy!" << std::endl;
+				goto stop;
 			}
 		} while (val != "x");
-
+	stop: break;
 	} while (true);
 
 	return 0;
