@@ -34,6 +34,26 @@ public:
 	{
 		num_appart = value;
 	}
+
+	std::string get_city()
+	{
+		return city;
+	}
+
+	std::string get_street()
+	{
+		return street;
+	}
+
+	int get_num_house()
+	{
+		return num_house;
+	}
+
+	int get_num_apparte()
+	{
+		return num_appart;
+	}
 };
 
 std::string** new_arr(int rows, int columns)
@@ -79,19 +99,19 @@ int main()
 	{
 		fin >> value;
 		new_country.set_city(value);
-		arr[row][i] = value;
+		arr[row][i] = new_country.get_city();
 		row++;
 		fin >> value;
 		new_country.set_street(value);
-		arr[row][i] = value;
+		arr[row][i] = new_country.get_street();
 		row++;
 		fin >> value;
 		new_country.set_num_house(stoi(value));
-		arr[row][i] = value;
+		arr[row][i] = std::to_string(new_country.get_num_house());
 		row++;
 		fin >> value;
 		new_country.set_num_apparte(stoi(value));
-		arr[row][i] = value;
+		arr[row][i] = std::to_string(new_country.get_num_apparte());
 		row = 0;		
 	}
 
@@ -99,7 +119,6 @@ int main()
 	{
 		for (int row = 0; row < rows; row++)
 		{
-			//fout << arr[row][col] << ", ";
 			if (row != rows - 1)
 			{
 				fout << arr[row][col] << ", ";
