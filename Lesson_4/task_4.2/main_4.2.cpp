@@ -13,12 +13,7 @@ protected:
 	int num_appart;
 
 public:
-	Address() { N = 0; }
-
-	void set_N(std::ifstream& fin)
-	{
-		fin >> N;
-	}
+	Address(int size_arr) { this->N = size_arr; }
 
 	void set_city(std::string value)
 	{
@@ -38,11 +33,6 @@ public:
 	void set_num_apparte(int value)
 	{
 		num_appart = value;
-	}
-
-	int get_N()
-	{
-		return N;
 	}
 
 	std::string get_city()
@@ -90,53 +80,80 @@ void delete_arr(std::string** arr, int rows)
 
 int main()
 {
-	int rows = 4;
-	int row = 0;
+	setlocale(LC_ALL, "Russian");
+	SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);
+
+	int N = 4;
+	int rows;
+	int schet = 0;
 	std::string value;
 	std::ifstream fin("in.txt");
-	Address new_country;
-	new_country.set_N(fin);
-	int N = new_country.get_N();
+	fin >> rows;
 	std::ofstream fout("out.txt");
-	fout << N << "\n";
-	std::string** arr = new_arr(rows, N);
+	fout << rows << "\n";
+	Address new_country(N);
+	std::string* arr = new std::string [rows];
+	std::string* arr_first_str = new std::string[rows];
 
-	for (int i = 0; i < N; i++)
+	std::string all_str;
+	std::string first_str;
+
+	for (int i = 0; i < rows; i++)
 	{
 		fin >> value;
 		new_country.set_city(value);
-		arr[row][i] = new_country.get_city();
-		row++;
+		all_str += new_country.get_city() + ", ";
+		arr_first_str[i] = all_str;
 		fin >> value;
 		new_country.set_street(value);
-		arr[row][i] = new_country.get_street();
-		row++;
+		all_str += new_country.get_street() + ", ";
 		fin >> value;
 		new_country.set_num_house(stoi(value));
-		arr[row][i] = std::to_string(new_country.get_num_house());
-		row++;
+		all_str += std::to_string(new_country.get_num_house()) + ", ";
 		fin >> value;
 		new_country.set_num_apparte(stoi(value));
-		arr[row][i] = std::to_string(new_country.get_num_apparte());
-		row = 0;		
+		all_str += std::to_string(new_country.get_num_apparte());
+
+		arr[i] = all_str;
+		all_str = "";
 	}
 
-	for (int col = N - 1; col >= 0; col--)
+	while (true)
 	{
-		for (int row = 0; row < rows; row++)
+		for (int row = 0; row < rows - 1; row++)
 		{
-			if (row != rows - 1)
+			if (arr_first_str[row].compare(arr_first_str[row + 1]) > 0)
 			{
-				fout << arr[row][col] << ", ";
+				all_str = arr[row];
+				arr[row] = arr[row + 1];
+				arr[row + 1] = all_str;
+				first_str = arr_first_str[row];
+				arr_first_str[row] = arr_first_str[row + 1];
+				arr_first_str[row + 1] = first_str;
+				schet = 0;
+				break;
+
 			}
-			else { fout << arr[row][col]; }
+			else if (arr_first_str[row].compare(arr_first_str[row + 1]) <= 0)
+			{
+				schet++;
+			}
+			
 		}
-		fout << "\n";
+
+		if (schet >= rows)
+		{
+			break;
+		}
 	}
 
-	fin.close();
-	fout.close();
+	for (int i = 0; i < rows; i++)
+	{
+		fout << arr[i] << "\n";
+	}
 
-	delete_arr(arr, rows);
+	delete[] arr;
+	delete[] arr_first_str;
 	return 0;
 }
