@@ -13,3 +13,7 @@
 [Задание № 3.1](https://github.com/Mickle36/HW-CPP/tree/main/Lesson_3/task_3.1)
 
 [Задание № 3.2](https://github.com/Mickle36/HW-CPP/tree/main/Lesson_3/task_3.2)
+
+[Задание № 4.1](https://github.com/Mickle36/HW-CPP/tree/main/Lesson_4/task_4.1)
+
+[Задание № 4.2](https://github.com/Mickle36/HW-CPP/tree/main/Lesson_4/task_4.2)
