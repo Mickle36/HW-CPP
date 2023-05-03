@@ -132,6 +132,12 @@ int main()
 		fout << new_country.get_num_apparte()[i] << std::endl;
 	}
 
+	delete[] new_country.get_city();
+	delete[] new_country.get_street();
+	delete[] new_country.get_num_house();
+	delete[] new_country.get_num_apparte();
+	fin.close();
+	fout.close();
 
 	return 0;
 }
