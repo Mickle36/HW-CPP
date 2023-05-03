@@ -6,137 +6,97 @@
 class Address
 {
 protected:
-	int N;
-	std::string city;
-	std::string street;
-	int num_house;
-	int num_appart;
+	std::string* city;
+	std::string* street;
+	int* num_house;
+	int* num_appart;
 
 public:
-	Address() { N = 0; }
-
-	void set_N(std::ifstream& fin)
+	Address(int N) 
 	{
-		fin >> N;
+		this->city = new std::string[N];
+		this->street = new std::string[N];
+		this->num_house = new int[N];
+		this->num_appart = new int[N];
 	}
 
-	void set_city(std::string value)
+	void set_city(std::string value, int row)
 	{
-		city = value;
+		city[row] = value;
 	}
 
-	void set_street(std::string value)
+	void set_street(std::string value, int row)
 	{
-		street = value;
+		street[row] = value;
 	}
 
-	void set_num_house(int value)
+	void set_num_house(int value, int row)
 	{
-		num_house = value;
+		num_house[row] = value;
 	}
 
-	void set_num_apparte(int value)
+	void set_num_apparte(int value, int row)
 	{
-		num_appart = value;
+		num_appart[row] = value;
 	}
 
-	int get_N()
-	{
-		return N;
-	}
-
-	std::string get_city()
+	std::string* get_city()
 	{
 		return city;
 	}
 
-	std::string get_street()
+	std::string* get_street()
 	{
 		return street;
 	}
 
-	int get_num_house()
+	int* get_num_house()
 	{
 		return num_house;
 	}
 
-	int get_num_apparte()
+	int* get_num_apparte()
 	{
 		return num_appart;
 	}
 };
 
-std::string** new_arr(int rows, int columns)
-{
-	std::string** arr = new std::string * [rows];
-
-	for (int row = 0; row < rows; row++)
-	{
-		arr[row] = new std::string[columns];
-	}
-
-	return arr;
-}
-
-void delete_arr(std::string** arr, int rows)
-{
-	for (int row = 0; row < rows; row++)
-	{
-		delete[] arr[row];
-	}
-	delete[] arr;
-	arr = nullptr;
-}
-
 int main()
 {
-	int rows = 4;
-	int row = 0;
+	int N;
 	std::string value;
 	std::ifstream fin("in.txt");
-	Address new_country;
-	new_country.set_N(fin);
-	int N = new_country.get_N();
+	fin >> N;
+	Address new_country(N);
 	std::ofstream fout("out.txt");
 	fout << N << "\n";
-	std::string** arr = new_arr(rows, N);
 
-	for (int i = 0; i < N; i++)
+	for (int row = 0; row < N; row++)
 	{
 		fin >> value;
-		new_country.set_city(value);
-		arr[row][i] = new_country.get_city();
-		row++;
+		new_country.set_city(value, row);
 		fin >> value;
-		new_country.set_street(value);
-		arr[row][i] = new_country.get_street();
-		row++;
+		new_country.set_street(value, row);
 		fin >> value;
-		new_country.set_num_house(stoi(value));
-		arr[row][i] = std::to_string(new_country.get_num_house());
-		row++;
+		new_country.set_num_house(stoi(value), row);
 		fin >> value;
-		new_country.set_num_apparte(stoi(value));
-		arr[row][i] = std::to_string(new_country.get_num_apparte());
-		row = 0;		
+		new_country.set_num_apparte(stoi(value), row);
 	}
 
-	for (int col = N - 1; col >= 0; col--)
+	for (int i = N - 1; i >= 0; i--)
 	{
-		for (int row = 0; row < rows; row++)
-		{
-			if (row != rows - 1)
-			{
-				fout << arr[row][col] << ", ";
-			}
-			else { fout << arr[row][col]; }
-		}
-		fout << "\n";
+		fout << new_country.get_city()[i] << ", ";
+		fout << new_country.get_street()[i] << ", ";
+		fout << new_country.get_num_house()[i] << ", ";
+		fout << new_country.get_num_apparte()[i] << std::endl;
 	}
 
+	delete[] new_country.get_city();
+	delete[] new_country.get_street();
+	delete[] new_country.get_num_house();
+	delete[] new_country.get_num_apparte();
 	fin.close();
 	fout.close();
 
-	delete_arr(arr, rows);
 	return 0;
 }
