@@ -57,6 +57,8 @@ public:
 
 int main()
 {
+	setlocale(LC_ALL, "ru");
+
 	int N;
 	int schet = 0;
 	std::string value;
@@ -65,8 +67,7 @@ int main()
 	Address* new_country = new Address[N];
 	std::ofstream fout("out.txt");
 	fout << N << "\n";
-	std::string bufer_str;
-	int bufer_int;
+	Address* bufer = new Address[N];
 
 	for (int row = 0; row < N; row++)
 	{
@@ -86,22 +87,10 @@ int main()
 		{
 			if (new_country[row].get_city().compare(new_country[row + 1].get_city()) > 0)
 			{
-				bufer_str = new_country[row].get_city();
-				new_country[row].get_city() = new_country[row + 1].get_city();
-				new_country[row + 1].get_city() = bufer_str;
-
-				bufer_str = new_country[row].get_street();
-				new_country[row].get_street() = new_country[row + 1].get_street();
-				new_country[row + 1].get_street() = bufer_str;
-
-				/*bufer_int = new_country[row].get_num_house();
-				new_country[row].get_num_house() = new_country[row + 1].get_num_house();
-				new_country[row + 1].get_num_house() = bufer_int;
-
-				bufer_int = new_country[row].get_num_apparte();
-				new_country[row].get_num_apparte() = new_country[row + 1].get_num_apparte();
-				new_country[row + 1].get_num_apparte() = bufer_int;
-				schet = 0;*/
+				bufer[row] = new_country[row];
+				new_country[row] = new_country[row + 1];
+				new_country[row + 1] = bufer[row];
+				schet = 0;
 				break;
 
 			}
