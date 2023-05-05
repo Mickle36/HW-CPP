@@ -85,6 +85,7 @@ int main()
 		fout << new_country[i].get_num_apparte() << std::endl;
 	}
 
+	delete[] new_country;
 	fin.close();
 	fout.close();
 
