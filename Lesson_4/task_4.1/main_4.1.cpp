@@ -6,56 +6,50 @@
 class Address
 {
 protected:
-	std::string* city;
-	std::string* street;
-	int* num_house;
-	int* num_appart;
+	std::string city;
+	std::string street;
+	int num_house;
+	int num_appart;
 
 public:
-	Address(int N) 
+	Address() {}
+
+	void set_city(std::string value)
 	{
-		this->city = new std::string[N];
-		this->street = new std::string[N];
-		this->num_house = new int[N];
-		this->num_appart = new int[N];
+		city = value;
 	}
 
-	void set_city(std::string value, int row)
+	void set_street(std::string value)
 	{
-		city[row] = value;
+		street = value;
 	}
 
-	void set_street(std::string value, int row)
+	void set_num_house(int value)
 	{
-		street[row] = value;
+		num_house = value;
 	}
 
-	void set_num_house(int value, int row)
+	void set_num_apparte(int value)
 	{
-		num_house[row] = value;
+		num_appart = value;
 	}
 
-	void set_num_apparte(int value, int row)
-	{
-		num_appart[row] = value;
-	}
-
-	std::string* get_city()
+	std::string get_city()
 	{
 		return city;
 	}
 
-	std::string* get_street()
+	std::string get_street()
 	{
 		return street;
 	}
 
-	int* get_num_house()
+	int get_num_house()
 	{
 		return num_house;
 	}
 
-	int* get_num_apparte()
+	int get_num_apparte()
 	{
 		return num_appart;
 	}
@@ -67,34 +61,30 @@ int main()
 	std::string value;
 	std::ifstream fin("in.txt");
 	fin >> N;
-	Address new_country(N);
+	Address* new_country = new Address[N];
 	std::ofstream fout("out.txt");
 	fout << N << "\n";
 
 	for (int row = 0; row < N; row++)
 	{
 		fin >> value;
-		new_country.set_city(value, row);
+		new_country[row].set_city(value);
 		fin >> value;
-		new_country.set_street(value, row);
+		new_country[row].set_street(value);
 		fin >> value;
-		new_country.set_num_house(stoi(value), row);
+		new_country[row].set_num_house(stoi(value));
 		fin >> value;
-		new_country.set_num_apparte(stoi(value), row);
+		new_country[row].set_num_apparte(stoi(value));
 	}
 
 	for (int i = N - 1; i >= 0; i--)
 	{
-		fout << new_country.get_city()[i] << ", ";
-		fout << new_country.get_street()[i] << ", ";
-		fout << new_country.get_num_house()[i] << ", ";
-		fout << new_country.get_num_apparte()[i] << std::endl;
+		fout << new_country[i].get_city() << ", ";
+		fout << new_country[i].get_street() << ", ";
+		fout << new_country[i].get_num_house() << ", ";
+		fout << new_country[i].get_num_apparte() << std::endl;
 	}
 
-	delete[] new_country.get_city();
-	delete[] new_country.get_street();
-	delete[] new_country.get_num_house();
-	delete[] new_country.get_num_apparte();
 	fin.close();
 	fout.close();
 
