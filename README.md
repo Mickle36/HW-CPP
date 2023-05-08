@@ -17,3 +17,9 @@
 [Задание № 4.1](https://github.com/Mickle36/HW-CPP/tree/main/Lesson_4/task_4.1)
 
 [Задание № 4.2](https://github.com/Mickle36/HW-CPP/tree/main/Lesson_4/task_4.2)
+
+[Задание № 5.1](https://github.com/Mickle36/HW-CPP/tree/main/Lesson_5/task_5.1)
+
+[Задание № 5.2](https://github.com/Mickle36/HW-CPP/tree/main/Lesson_5/task_5.2)
+
+[Задание № 5.3](https://github.com/Mickle36/HW-CPP/tree/main/Lesson_5/task_5.3)
