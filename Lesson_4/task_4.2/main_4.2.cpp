@@ -67,7 +67,7 @@ int main()
 	Address* new_country = new Address[N];
 	std::ofstream fout("out.txt");
 	fout << N << "\n";
-	Address* bufer = new Address[N];
+	Address bufer;
 
 	for (int row = 0; row < N; row++)
 	{
@@ -87,9 +87,9 @@ int main()
 		{
 			if (new_country[row].get_city().compare(new_country[row + 1].get_city()) > 0)
 			{
-				bufer[row] = new_country[row];
+				bufer = new_country[row];
 				new_country[row] = new_country[row + 1];
-				new_country[row + 1] = bufer[row];
+				new_country[row + 1] = bufer;
 				schet = 0;
 				break;
 
@@ -103,7 +103,6 @@ int main()
 
 		if (schet >= N)
 		{
-			delete[] bufer;
 			break;
 		}
 	}
