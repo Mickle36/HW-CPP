@@ -14,13 +14,21 @@ public:
 	}
 
 	int get_sides() { return sides; }
+	std::string get_name_fig() { return name_fig; }
+
+	virtual void about_me()
+	{
+		std::cout << name_fig + ":\n";
+		std::cout << "Количество сторон: " << sides << std::endl << std::endl;
+	}
 };
 
 class Triangle : public Figure
 {
-public:
+protected:
 	int a, b, c;
 	int A, B, C;
+public:
 	Triangle(int a, int b, int c, int A, int B, int C)
 	{
 		this->sides = 3;
@@ -32,12 +40,31 @@ public:
 		this->B = B;
 		this->C = C;
 	}
+
+	void about_me() override
+	{
+		int a = this->a, b = this->b, c = this->c;
+		int A = this->A, B = this->B, C = this->C;
+
+		if (C == 90) { std::cout << this->name_fig + ":" << std::endl; }
+
+		else if ((a == b && b == c && a == c) && (A == B && B == C && A == C)) 
+		{ std::cout << this->name_fig + ":" << std::endl; }
+
+		else if ((a == c) && (A == C)) { std::cout << this->name_fig + ":" << std::endl; }
+
+		else { std::cout << this->name_fig + ":" << std::endl; }
+
+		std::cout << "Стороны: a=" << a << " b=" << b << " c=" << c << std::endl;
+		std::cout << "Углы: A=" << A << " B=" << B << " C=" << C << std::endl;
+		std::cout << std::endl;
+	}
 };
 
 class RightTriangle : public Triangle
 {
 public:
-	RightTriangle(int a, int b, int c, int A, int B) : Triangle(a, b, c, A, B, C, name_fig)
+	RightTriangle(int a, int b, int c, int A, int B) : Triangle(a, b, c, A, B, C)
 	{
 		this->name_fig = "Прямоугольный треугольник";
 		this->a = a;
@@ -52,7 +79,7 @@ public:
 class IsoscelesTriangle : public Triangle
 {
 public:
-	IsoscelesTriangle(int a, int b, int A, int B, int C) : Triangle(a, b, c, A, B, C, name_fig)
+	IsoscelesTriangle(int a, int b, int A, int B, int C) : Triangle(a, b, c, A, B, C)
 	{
 		this->name_fig = "Равнобедренный треугольник";
 		this->a = a;
@@ -67,7 +94,7 @@ public:
 class EquilateralTriangle : public Triangle
 {
 public:
-	EquilateralTriangle(int a, int A) : Triangle(a, b, c, A, B, C, name_fig)
+	EquilateralTriangle(int a, int A) : Triangle(a, b, c, A, B, C)
 	{
 		this->name_fig = "Равносторонний треугольник";
 		this->a = a;
@@ -81,10 +108,11 @@ public:
 
 class Quadrilateral : public Figure
 {
-public:
+protected:
 	int a, b, c, d;
 	int A, B, C, D;
-	Quadrilateral(int a, int b, int c, int d, int A, int B, int C, int D, name_fig)
+public:
+	Quadrilateral(int a, int b, int c, int d, int A, int B, int C, int D)
 	{
 		this->name_fig = "Четырехугольник";
 		this->sides = 4;
@@ -97,12 +125,40 @@ public:
 		this->C = C;
 		this->D = D;
 	}
+
+	void about_me() override
+	{
+		int a = this->a, b = this->b, c = this->c, d = this->d;
+		int A = this->A, B = this->B, C = this->C, D = this->D;
+
+		if ((a == b && b == c && c == d) &&
+			(A == 90 && B == 90 && C == 90 && D == 90)) 
+		{ std::cout << this->name_fig + ":" << std::endl; }
+
+		else if ((a == c && b == d) && ((A == 90 && B == 90 && C == 90 && D == 90))) 
+		{ std::cout << this->name_fig + ":" << std::endl; }
+
+		else if ((a == b && b == c && c == d) && (A == C && B == D)) 
+		{ std::cout << this->name_fig + ":" << std::endl; }
+
+		else if ((a == c && b == d) && (A == C && B == D))
+		{ std::cout << this->name_fig + ":" << std::endl; }
+
+		else if ((a == c && b == d) && (A == 90 && B == 90 && C == 90 && D == 90)) 
+		{ std::cout << this->name_fig + ":" << std::endl; }
+
+		else { std::cout << this->name_fig + ":" << std::endl; }
+
+		std::cout << "Стороны: a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
+		std::cout << "Углы: A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl;
+		std::cout << std::endl;
+	}
 };
 
 class Rectangle : public Quadrilateral
 {
 public:
-	Rectangle(int a, int b, int A) : Quadrilateral(a, b, c, d, A, B, C, D, name_fig)
+	Rectangle(int a, int b, int A) : Quadrilateral(a, b, c, d, A, B, C, D)
 	{
 		this->name_fig = "Прямоугольник";
 		this->a = a;
@@ -119,7 +175,7 @@ public:
 class Square : public Quadrilateral
 {
 public:
-	Square(int a, int A) : Quadrilateral(a, b, c, d, A, B, C, D, name_fig)
+	Square(int a, int A) : Quadrilateral(a, b, c, d, A, B, C, D)
 	{
 		this->name_fig = "Квадрат";
 		this->a = a;
@@ -136,7 +192,7 @@ public:
 class Parallelogram : public Quadrilateral
 {
 public:
-	Parallelogram(int a, int b, int A, int B) : Quadrilateral(a, b, c, d, A, B, C, D, name_fig)
+	Parallelogram(int a, int b, int A, int B) : Quadrilateral(a, b, c, d, A, B, C, D)
 	{
 		this->name_fig = "Параллелограм";
 		this->a = a;
@@ -153,7 +209,7 @@ public:
 class Rhombus : public Quadrilateral
 {
 public:
-	Rhombus(int a, int A, int B) : Quadrilateral(a, b, c, d, A, B, C, D, name_fig)
+	Rhombus(int a, int A, int B) : Quadrilateral(a, b, c, d, A, B, C, D)
 	{
 		this->name_fig = "Ромб";
 		this->a = a;
@@ -169,58 +225,15 @@ public:
 
 void print_info(Figure* on_class)
 {
-	int a = on_class->get_side_a(), b = on_class->get_side_b(), c = on_class->get_side_c(), d = on_class->get_side_d();
-	int A = on_class->get_side_A(), B = on_class->get_side_B(), C = on_class->get_side_C(), D = on_class->get_side_D();
-
-	switch (on_class->get_sides())
-	{
-	case 3:
-	{
-		if (C == 90) { std::cout << "Прямоугольный треугольник: " << std::endl; }
-		
-		else if ((a == b && b == c && a == c) && 
-			(A == B && B == C && A == C)) { std::cout << "Равносторонний треугольник: " << std::endl; }
-
-		else if ((a == c) && (A == C)) {std::cout << "Равнобедренный треугольник: " << std::endl;}
-
-		else { std::cout << "Треугольник: " << std::endl; }
-		std::cout << "Стороны: a=" << a << " b=" << b << " c=" << c << std::endl;
-		std::cout << "Углы: A=" << A << " B=" << B << " C=" << C << std::endl;
-		std::cout << std::endl;
-		break;
-	}
-	case 4:
-		if ((a == b && b == c && c == d) &&
-			(A == 90 && B == 90 && C == 90 && D == 90)) {
-			std::cout << "Квадрат: " << std::endl;
-		}
-		else if ((a == c && b == d) &&
-			((A == 90 && B == 90 && C == 90 && D == 90))){ std::cout << "Прямоугольник: " << std::endl; 
-		}
-		else if ((a == b && b == c && c == d) &&
-			(A == C && B == D)) {
-			std::cout << "Ромб: " << std::endl;
-		}
-		else if ((a == c && b == d) &&
-			(A == C && B == D)) {
-			std::cout << "Параллелограмм: " << std::endl;
-		}
-		else if ((a == c && b == d) &&
-			(A == 90 && B == 90 && C == 90 && D == 90)) {
-			std::cout << "Прямоугольник: " << std::endl;
-		}
-		else { std::cout << "Четырехугольник: " << std::endl; }
-
-		std::cout << "Стороны: a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
-		std::cout << "Углы: A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl;
-		std::cout << std::endl;
-		break;
-	}
+	on_class->about_me();
 }
 
 int main()
 {
 	setlocale(LC_ALL, "ru");
+
+	Figure figure;
+	print_info(&figure);
 
 	Triangle triangle(10, 20, 30, 60, 70, 80);
 	RightTriangle right_triangle(10, 20, 30, 60, 70);
@@ -243,6 +256,7 @@ int main()
 	print_info(&square);
 	print_info(&parallelogram);
 	print_info(&rhombus);
+
 
 	return 0;
 }
