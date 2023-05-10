@@ -4,10 +4,17 @@ class Figure
 {
 protected:
 	int sides;
+	std::string name_fig;
 public:
 	Figure()
 	{
 		this->sides = 0;
+		this->name_fig = "Фигура";
+	}
+
+	std::string getName()
+	{
+		return name_fig;
 	}
 
 	int get_sides()
@@ -22,6 +29,7 @@ public:
 	Triangle()
 	{
 		this->sides = 3;
+		this->name_fig = "Треугольник";
 	}
 };
 
@@ -31,6 +39,7 @@ public:
 	Square()
 	{
 		this->sides = 4;
+		this->name_fig = "Четырёхугольник";
 	}
 };
 
@@ -43,7 +52,7 @@ int main()
 	Square square;
 
 	std::cout << "Количество сторон:\n";
-	std::cout << "Фигура: " << figure.get_sides() << std::endl;
-	std::cout << "Треугольник: " << triangle.get_sides() << std::endl;
-	std::cout << "Четырёхугольник: " << square.get_sides() << std::endl;
+	std::cout << figure.getName() + ": " << figure.get_sides() << std::endl;
+	std::cout << triangle.getName() + ": " << triangle.get_sides() << std::endl;
+	std::cout << square.getName() + ": " << square.get_sides() << std::endl;
 }

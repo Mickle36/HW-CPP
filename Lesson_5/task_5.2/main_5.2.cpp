@@ -5,30 +5,13 @@ class Figure
 {
 protected:
 	int sides;
-	int a, b, c, d;
-	int A, B, C, D;
+	std::string name_fig;
 public:
 	Figure()
 	{
 		this->sides = 0;
-		this->a = 0;
-		this->b = 0;
-		this->c = 0;
-		this->d = 0;
-		this->A = 0;
-		this->B = 0;
-		this->C = 0;
-		this->D = 0;
+		this-> name_fig = "Фигура";
 	}
-
-	int get_side_a() { return this->a; }
-	int get_side_b() { return this->b; }
-	int get_side_c() { return this->c; }
-	int get_side_d() { return this->d; }
-	int get_side_A() { return this->A; }
-	int get_side_B() { return this->B; }
-	int get_side_C() { return this->C; }
-	int get_side_D() { return this->D; }
 
 	int get_sides() { return sides; }
 };
@@ -36,9 +19,12 @@ public:
 class Triangle : public Figure
 {
 public:
+	int a, b, c;
+	int A, B, C;
 	Triangle(int a, int b, int c, int A, int B, int C)
 	{
 		this->sides = 3;
+		this->name_fig = "Треугольник";
 		this->a = a;
 		this->b = b;
 		this->c = c;
@@ -51,8 +37,9 @@ public:
 class RightTriangle : public Triangle
 {
 public:
-	RightTriangle(int a, int b, int c, int A, int B) : Triangle(a, b, c, A, B, C)
+	RightTriangle(int a, int b, int c, int A, int B) : Triangle(a, b, c, A, B, C, name_fig)
 	{
+		this->name_fig = "Прямоугольный треугольник";
 		this->a = a;
 		this->b = b;
 		this->c = c;
@@ -65,8 +52,9 @@ public:
 class IsoscelesTriangle : public Triangle
 {
 public:
-	IsoscelesTriangle(int a, int b, int A, int B, int C) : Triangle(a, b, c, A, B, C)
+	IsoscelesTriangle(int a, int b, int A, int B, int C) : Triangle(a, b, c, A, B, C, name_fig)
 	{
+		this->name_fig = "Равнобедренный треугольник";
 		this->a = a;
 		this->b = b;
 		this->c = this->a;
@@ -79,8 +67,9 @@ public:
 class EquilateralTriangle : public Triangle
 {
 public:
-	EquilateralTriangle(int a, int A) : Triangle(a, b, c, A, B, C)
+	EquilateralTriangle(int a, int A) : Triangle(a, b, c, A, B, C, name_fig)
 	{
+		this->name_fig = "Равносторонний треугольник";
 		this->a = a;
 		this->b = this->a;
 		this->c = this->a;
@@ -93,8 +82,11 @@ public:
 class Quadrilateral : public Figure
 {
 public:
-	Quadrilateral(int a, int b, int c, int d, int A, int B, int C, int D)
+	int a, b, c, d;
+	int A, B, C, D;
+	Quadrilateral(int a, int b, int c, int d, int A, int B, int C, int D, name_fig)
 	{
+		this->name_fig = "Четырехугольник";
 		this->sides = 4;
 		this->a = a;
 		this->b = b;
@@ -110,8 +102,9 @@ public:
 class Rectangle : public Quadrilateral
 {
 public:
-	Rectangle(int a, int b, int A) : Quadrilateral(a, b, c, d, A, B, C, D)
+	Rectangle(int a, int b, int A) : Quadrilateral(a, b, c, d, A, B, C, D, name_fig)
 	{
+		this->name_fig = "Прямоугольник";
 		this->a = a;
 		this->b = b;
 		this->c = this->a;
@@ -126,8 +119,9 @@ public:
 class Square : public Quadrilateral
 {
 public:
-	Square(int a, int A) : Quadrilateral(a, b, c, d, A, B, C, D)
+	Square(int a, int A) : Quadrilateral(a, b, c, d, A, B, C, D, name_fig)
 	{
+		this->name_fig = "Квадрат";
 		this->a = a;
 		this->b = this->a;
 		this->c = this->a;
@@ -142,8 +136,9 @@ public:
 class Parallelogram : public Quadrilateral
 {
 public:
-	Parallelogram(int a, int b, int A, int B) : Quadrilateral(a, b, c, d, A, B, C, D)
+	Parallelogram(int a, int b, int A, int B) : Quadrilateral(a, b, c, d, A, B, C, D, name_fig)
 	{
+		this->name_fig = "Параллелограм";
 		this->a = a;
 		this->b = b;
 		this->c = this->a;
@@ -158,8 +153,9 @@ public:
 class Rhombus : public Quadrilateral
 {
 public:
-	Rhombus(int a, int A, int B) : Quadrilateral(a, b, c, d, A, B, C, D)
+	Rhombus(int a, int A, int B) : Quadrilateral(a, b, c, d, A, B, C, D, name_fig)
 	{
+		this->name_fig = "Ромб";
 		this->a = a;
 		this->b = this->a;
 		this->c = this->a;
