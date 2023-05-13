@@ -6,7 +6,7 @@
 
 Counter::Counter(int schet, std::string val)
 {
-	Counter::schetchik = schet;
+	this->schetchik = schet;
 	Counter::value = val;
 }
 

@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 class Counter
 {
@@ -16,5 +17,4 @@ public:
 protected:
 	int schetchik = 0;
 	std::string value;
-
 };
