@@ -46,14 +46,7 @@ public:
 		int a = this->a, b = this->b, c = this->c;
 		int A = this->A, B = this->B, C = this->C;
 
-		if (C == 90) { std::cout << this->name_fig + ":" << std::endl; }
-
-		else if ((a == b && b == c && a == c) && (A == B && B == C && A == C)) 
-		{ std::cout << this->name_fig + ":" << std::endl; }
-
-		else if ((a == c) && (A == C)) { std::cout << this->name_fig + ":" << std::endl; }
-
-		else { std::cout << this->name_fig + ":" << std::endl; }
+		std::cout << this->name_fig + ":" << std::endl;
 
 		std::cout << "Стороны: a=" << a << " b=" << b << " c=" << c << std::endl;
 		std::cout << "Углы: A=" << A << " B=" << B << " C=" << C << std::endl;
@@ -131,23 +124,7 @@ public:
 		int a = this->a, b = this->b, c = this->c, d = this->d;
 		int A = this->A, B = this->B, C = this->C, D = this->D;
 
-		if ((a == b && b == c && c == d) &&
-			(A == 90 && B == 90 && C == 90 && D == 90)) 
-		{ std::cout << this->name_fig + ":" << std::endl; }
-
-		else if ((a == c && b == d) && ((A == 90 && B == 90 && C == 90 && D == 90))) 
-		{ std::cout << this->name_fig + ":" << std::endl; }
-
-		else if ((a == b && b == c && c == d) && (A == C && B == D)) 
-		{ std::cout << this->name_fig + ":" << std::endl; }
-
-		else if ((a == c && b == d) && (A == C && B == D))
-		{ std::cout << this->name_fig + ":" << std::endl; }
-
-		else if ((a == c && b == d) && (A == 90 && B == 90 && C == 90 && D == 90)) 
-		{ std::cout << this->name_fig + ":" << std::endl; }
-
-		else { std::cout << this->name_fig + ":" << std::endl; }
+		std::cout << this->name_fig + ":" << std::endl;
 
 		std::cout << "Стороны: a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
 		std::cout << "Углы: A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl;

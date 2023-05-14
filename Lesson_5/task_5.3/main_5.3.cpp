@@ -1,5 +1,4 @@
 #include <iostream>
-#include <ostream>
 
 class Figure
 {
@@ -16,15 +15,23 @@ public:
 	int get_sides() { return sides; }
 	std::string get_name_fig() { return name_fig; }
 
-	virtual void about_me()		//виртуальный метод описывающий фигуру
+	virtual void about_me(bool check_bool)		//виртуальный метод описывающий фигуру
 	{
 		std::cout << name_fig + ":\n";
-		std::cout << "Правильная\n";
+		if (check_bool)
+		{
+			std::cout << "Правильная\n";
+		}
+		else
+		{
+			std::cout << "Неравильная\n";
+		}
 		std::cout << "Количество сторон: " << sides << std::endl << std::endl;
 	}
 
-	virtual void check()		//виртуальный метод проверяющий фигуру на геометрические соотношения
+	virtual bool check()		//виртуальный метод проверяющий фигуру на геометрические соотношения
 	{
+		return true;
 	}
 };
 
@@ -33,7 +40,7 @@ class Triangle : public Figure
 {
 protected:
 	int a, b, c;
-	int A, B, C; 
+	int A, B, C;
 	int schet_angle;
 public:
 	Triangle(int a, int b, int c, int A, int B, int C)
@@ -46,14 +53,24 @@ public:
 		this->A = A;
 		this->B = B;
 		this->C = C;
+		this->schet_angle = A + B + C;
 	}
 
-	void about_me() override	//переопределение виртуального метода описывающий фигуру
+	void about_me(bool check_bool) override	//переопределение виртуального метода описывающий фигуру
 	{
 		int a = this->a, b = this->b, c = this->c;
 		int A = this->A, B = this->B, C = this->C;
 
-		
+		std::cout << this->name_fig + ":\n";
+
+		if (check_bool)
+		{
+			std::cout << "Правильная\n";
+		}
+		else
+		{
+			std::cout << "Неравильная\n";
+		}
 
 		std::cout << "Количество сторон: " << this->sides << std::endl;
 		std::cout << "Стороны: a=" << a << " b=" << b << " c=" << c << std::endl;
@@ -61,29 +78,14 @@ public:
 		std::cout << std::endl;
 	}
 
-	void check() override //переопределение виртуального метода проверяющую фигуру на геометрические соотношения
-	{
-		this->schet_angle = A + B + C;
-
-		if (C == 90) { std::cout << this->name_fig + ":" << std::endl; }
-
-		else if ((a == b && b == c && a == c) && (A == B && B == C && A == C))
-		{
-			std::cout << this->name_fig + ":" << std::endl;
-		}
-
-		else if ((a == c) && (A == C)) { std::cout << this->name_fig + ":" << std::endl; }
-
-		else { std::cout << this->name_fig + ":" << std::endl; }
-
+	bool check() override //переопределение виртуального метода проверяющую фигуру на геометрические соотношения
+	{		
 		switch (this->schet_angle)
 		{
 		case 180:
-			std::cout << "Правильная\n";
-			break;
+			return true;
 		default:
-			std::cout << "Неправельная\n";
-			break;
+			return false;
 		}
 	}
 };
@@ -101,6 +103,19 @@ public:
 		this->A = A;
 		this->B = B;
 		this->C = 90;
+		this->schet_angle = A + B + C;
+	}
+
+	bool check() override
+
+	{
+		switch (this->schet_angle)
+		{
+		case 180:
+			return true;
+		default:
+			return false;
+		}
 	}
 };
 
@@ -116,6 +131,19 @@ public:
 		this->A = A;
 		this->B = B;
 		this->C = C;
+		this->schet_angle = A + B + C;
+	}
+
+	bool check() override
+
+	{
+		switch (this->schet_angle)
+		{
+		case 180:
+			return true;
+		default:
+			return false;
+		}
 	}
 };
 
@@ -131,6 +159,19 @@ public:
 		this->A = A;
 		this->B = this->A;
 		this->C = this->A;
+		this->schet_angle = A + B + C;
+	}
+
+	bool check() override
+
+	{
+		switch (this->schet_angle)
+		{
+		case 180:
+			return true;
+		default:
+			return false;
+		}
 	}
 };
 
@@ -154,15 +195,25 @@ public:
 		this->B = B;
 		this->C = C;
 		this->D = D;
+		this->schet_angle = A + B + C + D;
 	}
 
 	
-	void about_me() override		//переопределение виртуального метода описывающий фигуру
+	void about_me(bool check_bool) override		//переопределение виртуального метода описывающий фигуру
 	{
 		int a = this->a, b = this->b, c = this->c, d = this->d;
 		int A = this->A, B = this->B, C = this->C, D = this->D;
 
-		
+		std::cout << this->name_fig + ":\n";
+
+		if (check_bool)
+		{
+			std::cout << "Правильная\n";
+		}
+		else
+		{
+			std::cout << "Неправильная\n";
+		}
 
 		std::cout << "Стороны: a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
 		std::cout << "Углы: A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl;
@@ -170,46 +221,14 @@ public:
 	}
 
 	
-	void check() override		//переопределение виртуального метода проверяющую фигуру на геометрические соотношения
+	bool check() override		//переопределение виртуального метода проверяющую фигуру на геометрические соотношения
 	{
-		this->schet_angle = A + B + C + D;
-		
-		if ((a == b && b == c && c == d) &&
-			(A == 90 && B == 90 && C == 90 && D == 90))
-		{
-			std::cout << this->name_fig + ":" << std::endl;
-		}
-
-		else if ((a == c && b == d) && ((A == 90 && B == 90 && C == 90 && D == 90)))
-		{
-			std::cout << this->name_fig + ":" << std::endl;
-		}
-
-		else if ((a == b && b == c && c == d) && (A == C && B == D))
-		{
-			std::cout << this->name_fig + ":" << std::endl;
-		}
-
-		else if ((a == c && b == d) && (A == C && B == D))
-		{
-			std::cout << this->name_fig + ":" << std::endl;
-		}
-
-		else if ((a == c && b == d) && (A == 90 && B == 90 && C == 90 && D == 90))
-		{
-			std::cout << this->name_fig + ":" << std::endl;
-		}
-
-		else { std::cout << this->name_fig + ":" << std::endl; }
-
 		switch (this->schet_angle)
 		{
 		case 360:
-			std::cout << "Правильная\n";
-			break;
+			return true;
 		default:
-			std::cout << "Неправельная\n";
-			break;
+			return false;
 		}
 	}
 };
@@ -229,6 +248,18 @@ public:
 		this->B = this->A;
 		this->C = this->A;
 		this->D = this->A;
+		this->schet_angle = A + B + C + D;
+	}
+
+	bool check() override
+	{
+		switch (this->schet_angle)
+		{
+		case 360:
+			return true;
+		default:
+			return false;
+		}
 	}
 };
 
@@ -246,6 +277,18 @@ public:
 		this->B = this->A;
 		this->C = this->A;
 		this->D = this->A;
+		this->schet_angle = A + B + C + D;
+	}
+
+	bool check() override
+	{
+		switch (this->schet_angle)
+		{
+		case 360:
+			return true;
+		default:
+			return false;
+		}
 	}
 };
 
@@ -263,6 +306,18 @@ public:
 		this->B = B;
 		this->C = this->A;
 		this->D = this->B;
+		this->schet_angle = A + B + C + D;
+	}
+
+	bool check() override
+	{
+		switch (this->schet_angle)
+		{
+		case 360:
+			return true;
+		default:
+			return false;
+		}
 	}
 };
 
@@ -280,14 +335,25 @@ public:
 		this->B = B;
 		this->C = this->A;
 		this->D = this->B;
+		this->schet_angle = A + B + C + D;
+	}
+
+	bool check() override
+	{
+		switch (this->schet_angle)
+		{
+		case 360:
+			return true;
+		default:
+			return false;
+		}
 	}
 };
 
 // метод для вывода информации о фигуре
 void print_info(Figure* on_class)
-{
-	on_class->check();
-	on_class->about_me();
+{	
+	on_class->about_me(on_class->check());
 }
 
 int main()
