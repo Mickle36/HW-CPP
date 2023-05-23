@@ -5,5 +5,6 @@
 class IsoscelesTriangle : public Triangle
 {
 public:
-	IsoscelesTriangle(int a, int b, int A, int B, int C);
+	IsoscelesTriangle(int a, int b, int A, int B);
+	void check_figure() override;
 };

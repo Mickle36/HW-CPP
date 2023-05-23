@@ -14,6 +14,7 @@
 
 void print_info(Figure* on_class)
 {
+	on_class->check_figure();
 	on_class->about_me();
 }
 
@@ -28,12 +29,25 @@ int main()
 		print_info(&figure);
 		Triangle triangle(10, 20, 30, 60, 70, 50);
 		print_info(&triangle);
-		RightTriangle right_triangle(10, 20, 30, 30, 70);
+		RightTriangle right_triangle(10, 20, 30, 30, 60);
 		print_info(&right_triangle);
 		EquilateralTriangle equilateral_triangle(30, 60);
 		print_info(&equilateral_triangle);
-		IsoscelesTriangle isosceles_triangle(10, 20, 60, 70, 60);
+		IsoscelesTriangle isosceles_triangle(10, 20, 55, 70);
 		print_info(&isosceles_triangle);
+
+		Quadrilateral quadrilateral(10, 20, 30, 40, 90, 90, 90, 90);
+		print_info(&quadrilateral);
+		Rectangle rectangle(10, 20, 90);
+		print_info(&rectangle);
+		Square square(10, 90);
+		print_info(&square);
+		Parallelogram parallelogram(10, 20, 120, 60);
+		print_info(&parallelogram);
+		Rhombus rhombus(20, 70, 110);
+		print_info(&rhombus);
+		Rhombus rhombus_2(20, 70, 50);
+		print_info(&rhombus_2);
 		
 	}
 	catch (const CheckFigure& err)
@@ -42,17 +56,7 @@ int main()
 	}
 	
 
-	//Quadrilateral quadrilateral(10, 20, 30, 40, 50, 60, 70, 80);
-	//Rectangle rectangle(10, 20, 90);
-	//Square square(10, 90);
-	//Parallelogram parallelogram(10, 20, 30, 40);
-	//Rhombus rhombus(20, 30, 40);
-
-	//print_info(&quadrilateral);
-	//print_info(&rectangle);
-	//print_info(&square);
-	//print_info(&parallelogram);
-	//print_info(&rhombus);
+	
 
 
 	return 0;

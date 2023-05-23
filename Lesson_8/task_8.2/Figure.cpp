@@ -14,10 +14,14 @@ std::string Figure::get_name_fig() { return this->name_fig; }
 
 void Figure::about_me()
 {
+	std::cout << this->get_name_fig();
+	std::cout << " (количество сторон " << this->get_sides() << ") создан" << std::endl << std::endl;
+}
+
+void Figure::check_figure()
+{
 	if (this->sides != 0)
 	{
 		throw CheckFigure("это не родительский класс");
 	}
-	std::cout << this->get_name_fig();
-	std::cout << " (количество сторон " << this->get_sides() << ") создан" << std::endl << std::endl;
 }

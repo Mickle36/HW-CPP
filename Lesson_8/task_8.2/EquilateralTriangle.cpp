@@ -3,11 +3,20 @@
 #include "CheckFiguge.h"
 
 
-EquilateralTriangle::EquilateralTriangle(int a, int A) : Triangle::Triangle(a = a, b = a, c = a, A = A, B = A, C = A)
+EquilateralTriangle::EquilateralTriangle(int a, int A) : Triangle::Triangle(a, b, c, A, B, C)
 {
 	this->name_fig = "Равносторонний треугольник";
+	this->a = a;
+	this->b = a;
+	this->c = a;
+	this->A = A;
+	this->B = A;
+	this->C = A;
 	this->sum_angels = A + B + C;
+}
 
+void EquilateralTriangle::check_figure()
+{
 	if (this->sum_angels != 180)
 	{
 		throw CheckFigure("сумма углов не равна 180");
@@ -20,5 +29,4 @@ EquilateralTriangle::EquilateralTriangle(int a, int A) : Triangle::Triangle(a = 
 	{
 		throw CheckFigure("у фигуры \"" + this->get_name_fig() + "\" все углы должны быть равны");
 	}
-
 }

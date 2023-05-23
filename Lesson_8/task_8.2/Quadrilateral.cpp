@@ -2,6 +2,7 @@
 #include <string>
 #include "Figure.h"
 #include "Quadrilateral.h"
+#include "CheckFiguge.h"
 
 
 Quadrilateral::Quadrilateral(int a, int b, int c, int d, int A, int B, int C, int D)
@@ -16,6 +17,7 @@ Quadrilateral::Quadrilateral(int a, int b, int c, int d, int A, int B, int C, in
 	this->B = B;
 	this->C = C;
 	this->D = D;
+	this->sum_angels = A + B + C + D;
 }
 
 void Quadrilateral::about_me()
@@ -26,32 +28,44 @@ void Quadrilateral::about_me()
 	if ((a == b && b == c && c == d) &&
 		(A == 90 && B == 90 && C == 90 && D == 90))
 	{
-		std::cout << this->name_fig + ":" << std::endl;
+		std::cout << this->name_fig;
 	}
 
 	else if ((a == c && b == d) && ((A == 90 && B == 90 && C == 90 && D == 90)))
 	{
-		std::cout << this->name_fig + ":" << std::endl;
+		std::cout << this->name_fig;
 	}
 
 	else if ((a == b && b == c && c == d) && (A == C && B == D))
 	{
-		std::cout << this->name_fig + ":" << std::endl;
+		std::cout << this->name_fig;
 	}
 
 	else if ((a == c && b == d) && (A == C && B == D))
 	{
-		std::cout << this->name_fig + ":" << std::endl;
+		std::cout << this->name_fig;
 	}
 
 	else if ((a == c && b == d) && (A == 90 && B == 90 && C == 90 && D == 90))
 	{
-		std::cout << this->name_fig + ":" << std::endl;
+		std::cout << this->name_fig;
 	}
 
-	else { std::cout << this->name_fig + ":" << std::endl; }
+	else { std::cout << this->name_fig; }
 
-	std::cout << "Стороны: a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
-	std::cout << "Углы: A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl;
+	std::cout << " (cтороны " << a << ", " << b << ", " << c << ", " << d;
+	std::cout << "; углы " << A << ", " << B << ", " << C << ", " << D << ") создан" << std::endl;
 	std::cout << std::endl;
+}
+
+void Quadrilateral::check_figure()
+{
+	if (this->sum_angels != 360)
+	{
+		throw CheckFigure("у фигуры \"" + this->get_name_fig() + "\" сумма углов не равна 360");
+	}
+	else if (this->sides != 4)
+	{
+		throw CheckFigure("у фигуры \"" + this->get_name_fig() + "\" сумма сторон не равна 4, это явно не четырехугольник.");
+	}
 }

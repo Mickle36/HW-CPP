@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
 #include <iostream>
-#include "CheckFiguge.h"
 
 class Figure
 {
@@ -16,4 +15,5 @@ public:
 	std::string get_name_fig();
 
 	virtual void about_me();
+	virtual void check_figure();
 };

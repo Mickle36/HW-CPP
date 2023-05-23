@@ -3,11 +3,21 @@
 #include "CheckFiguge.h"
 
 
-RightTriangle::RightTriangle(int a, int b, int c, int A, int B) : Triangle::Triangle(a = a, b = b, c = c, A = A, B = B, C = 90)
+RightTriangle::RightTriangle(int a, int b, int c, int A, int B) : Triangle::Triangle(a, b, c, A, B, C)
 {
 	this->name_fig = "Прямоугольный треугольник";
+	this->a = a;
+	this->b = b;
+	this->c = c;
+	this->A = A;
+	this->B = B;
+	this->C = 90;
 	this->sum_angels = A + B + C;
 
+}
+
+void RightTriangle::check_figure()
+{
 	if (this->sum_angels != 180)
 	{
 		throw CheckFigure("У фигуры \"" + this->get_name_fig() + "\" сумма углов не равна 180");
@@ -15,5 +25,9 @@ RightTriangle::RightTriangle(int a, int b, int c, int A, int B) : Triangle::Tria
 	else if (this->sides != 3)
 	{
 		throw CheckFigure("сумма сторон не ровна 3, это явно не треугольник.");
+	}
+	else if (this->C != 90)
+	{
+		throw CheckFigure("У фигуры \"" + this->get_name_fig() + "\" нет прямого угла");
 	}
 }

@@ -1,9 +1,10 @@
 #pragma once
 #include "Triangle.h"
-#include "CheckFiguge.h"
+//#include "CheckFiguge.h"
 
 class EquilateralTriangle : public Triangle
 {
 public:
 	EquilateralTriangle(int a, int A);
+	void check_figure() override;
 };
