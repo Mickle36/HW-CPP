@@ -3,18 +3,11 @@
 #include "CheckFiguge.h"
 
 
-Rectangle::Rectangle(int a, int b, int A) : Quadrilateral::Quadrilateral(a, b, c, d, A, B, C, D)
+Rectangle::Rectangle(int a, int b, int A) : Quadrilateral::Quadrilateral(a=a, b=b, c=a, d=b, A=A, B=A, C=A, D=A)
 {
 	this->name_fig = "Прямоугольник";
-	this->a = a;
-	this->b = b;
-	this->c = this->a;
-	this->d = this->b;
-	this->A = A;
-	this->B = this->A;
-	this->C = this->A;
-	this->D = this->A;
 	this->sum_angels = A + B + C + D;
+	Rectangle::check_figure();
 }
 
 void Rectangle::check_figure()

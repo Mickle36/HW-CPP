@@ -7,6 +7,7 @@ Figure::Figure()
 {
 	this->sides = 0;
 	this->name_fig = "Фигура";
+	Figure::check_figure();
 }
 
 int Figure::get_sides() { return this->sides; }

@@ -18,6 +18,7 @@ Quadrilateral::Quadrilateral(int a, int b, int c, int d, int A, int B, int C, in
 	this->C = C;
 	this->D = D;
 	this->sum_angels = A + B + C + D;
+	//Quadrilateral::check_figure();
 }
 
 void Quadrilateral::about_me()

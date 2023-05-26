@@ -14,7 +14,7 @@
 
 void print_info(Figure* on_class)
 {
-	on_class->check_figure();
+	//on_class->check_figure();
 	on_class->about_me();
 }
 
@@ -46,6 +46,7 @@ int main()
 		print_info(&parallelogram);
 		Rhombus rhombus(20, 70, 110);
 		print_info(&rhombus);
+
 		Rhombus rhombus_2(20, 70, 50);
 		print_info(&rhombus_2);
 		
@@ -54,10 +55,6 @@ int main()
 	{
 		std::cout << "Ошибка создания фигуры. Причина: " << err.what() << std::endl;
 	}
-	
-
-	
-
 
 	return 0;
 }

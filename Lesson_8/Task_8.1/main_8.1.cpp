@@ -2,17 +2,15 @@
 #include <string>
 #include <Windows.h>
 
-enum class StringLength { CorrectLength, BadLength};
-
-StringLength function(std::string str, int forbidden_length)
+int function(std::string str, int forbidden_length)
 {
-	if (str.length() != forbidden_length)
+	if (str.length() == forbidden_length)
 	{
-		return StringLength::CorrectLength;
+		throw std::runtime_error("Вы ввели слово запретной длины! До свидания");
 	}
-	else if (str.length() == forbidden_length)
+	else
 	{
-		return StringLength::BadLength;
+		return str.length();
 	}
 }
 
@@ -20,6 +18,7 @@ int main()
 {
 	int forbidden_length;
 	std::string str;
+	int LengthResult;
 
 	setlocale(LC_ALL, "ru");
 	SetConsoleOutputCP(1251);
@@ -30,18 +29,18 @@ int main()
 
 	while (true)
 	{
-		std::cout << "Введите слово: ";
-		std::cin >> str;
-
-		StringLength LengthResult = function(str, forbidden_length);
-
-		if (LengthResult == StringLength::CorrectLength)
+		try
 		{
+			std::cout << "Введите слово: ";
+			std::cin >> str;
+
+			LengthResult = function(str, forbidden_length);
+
 			std::cout << "Длина слова \"" + str + "\" равна " << str.length() << std::endl;
 		}
-		else if (LengthResult == StringLength::BadLength)
+		catch (const std::exception& ex)
 		{
-			std::cout << "Вы ввели слово запретной длины! До свидания" << std::endl;
+			std::cout << ex.what() << std::endl;
 			break;
 		}
 	}

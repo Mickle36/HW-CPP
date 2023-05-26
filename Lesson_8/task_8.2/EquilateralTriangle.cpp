@@ -3,16 +3,11 @@
 #include "CheckFiguge.h"
 
 
-EquilateralTriangle::EquilateralTriangle(int a, int A) : Triangle::Triangle(a, b, c, A, B, C)
+EquilateralTriangle::EquilateralTriangle(int a, int A) : Triangle::Triangle(a = a, b = a, c = a, A = A, B = A, C = A)
 {
 	this->name_fig = "Равносторонний треугольник";
-	this->a = a;
-	this->b = a;
-	this->c = a;
-	this->A = A;
-	this->B = A;
-	this->C = A;
 	this->sum_angels = A + B + C;
+	EquilateralTriangle::check_figure();
 }
 
 void EquilateralTriangle::check_figure()

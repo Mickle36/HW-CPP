@@ -2,18 +2,11 @@
 #include "Rhombus.h"
 #include "CheckFiguge.h"
 
-Rhombus::Rhombus(int a, int A, int B) : Quadrilateral::Quadrilateral(a, b, c, d, A, B, C, D)
+Rhombus::Rhombus(int a, int A, int B) : Quadrilateral::Quadrilateral(a = a, b = a, c = a, d = a, A = A, B = B, C = A, D = B)
 {
 	this->name_fig = "Ромб";
-	this->a = a;
-	this->b = this->a;
-	this->c = this->a;
-	this->d = this->a;
-	this->A = A;
-	this->B = B;
-	this->C = this->A;
-	this->D = this->B;
 	this->sum_angels = A + B + C + D;
+	Rhombus::check_figure();
 }
 
 void Rhombus::check_figure()

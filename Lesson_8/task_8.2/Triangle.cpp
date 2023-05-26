@@ -14,6 +14,7 @@ Triangle::Triangle(int a, int b, int c, int A, int B, int C)
 	this->B = B;
 	this->C = C;
 	this->sum_angels = A + B + C;
+	//Triangle::check_figure();
 }
 
 void Triangle::about_me()

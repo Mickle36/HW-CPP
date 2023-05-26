@@ -3,17 +3,11 @@
 #include "CheckFiguge.h"
 
 
-RightTriangle::RightTriangle(int a, int b, int c, int A, int B) : Triangle::Triangle(a, b, c, A, B, C)
+RightTriangle::RightTriangle(int a, int b, int c, int A, int B) : Triangle::Triangle(a = a, b = b, c = c, A = A, B = B, C = 90)
 {
-	this->name_fig = "Прямоугольный треугольник";
-	this->a = a;
-	this->b = b;
-	this->c = c;
-	this->A = A;
-	this->B = B;
-	this->C = 90;
 	this->sum_angels = A + B + C;
-
+	this->name_fig = "Прямоугольный треугольник";
+	RightTriangle::check_figure();
 }
 
 void RightTriangle::check_figure()

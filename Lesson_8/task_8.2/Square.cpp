@@ -2,18 +2,11 @@
 #include "Square.h"
 #include "CheckFiguge.h"
 
-Square::Square(int a, int A) : Quadrilateral::Quadrilateral(a, b, c, d, A, B, C, D)
+Square::Square(int a, int A) : Quadrilateral::Quadrilateral(a = a, b = a, c = a, d = a, A = A, B = A, C = A, D = A)
 {
 	this->name_fig = " вадрат";
-	this->a = a;
-	this->b = this->a;
-	this->c = this->a;
-	this->d = this->a;
-	this->A = A;
-	this->B = this->A;
-	this->C = this->A;
-	this->D = this->A;
 	this->sum_angels = A + B + C + D;
+	Square::check_figure();
 }
 
 void Square::check_figure()
