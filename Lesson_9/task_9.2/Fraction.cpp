@@ -4,12 +4,12 @@
 
 Fraction::Fraction(int numerator, int denominator)
 {
-	numerator_ = numerator;
-	denominator_ = denominator;
+	this->numerator_ = numerator;
+	this->denominator_ = denominator;
 
-	if (this->denominator_ == 0)
+	if ((this->denominator_ == 0) || (this->numerator_ == 0))
 	{
-		throw std::runtime_error("Делить на ноль нельзя!!!");
+		throw std::runtime_error("В дроби не должно быть нулей!!!");
 	}
 }
 

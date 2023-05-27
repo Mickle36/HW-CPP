@@ -6,9 +6,9 @@ Fraction::Fraction(int numerator, int denominator)
 {
 	numerator_ = numerator;
 	denominator_ = denominator;
-	if (denominator == 0)
+	if ((denominator == 0) || (numerator_ == 0))
 	{
-		throw std::runtime_error("Делить на ноль нельзя!!!");
+		throw std::runtime_error("В дроби не должно быть нулей!!!");
 	}
 }
 
