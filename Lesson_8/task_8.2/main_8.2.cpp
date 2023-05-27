@@ -14,7 +14,6 @@
 
 void print_info(Figure* on_class)
 {
-	//on_class->check_figure();
 	on_class->about_me();
 }
 
@@ -29,7 +28,7 @@ int main()
 		print_info(&figure);
 		Triangle triangle(10, 20, 30, 60, 70, 50);
 		print_info(&triangle);
-		RightTriangle right_triangle(10, 20, 30, 30, 60);
+		RightTriangle right_triangle(10, 20, 30, 30, 6);
 		print_info(&right_triangle);
 		EquilateralTriangle equilateral_triangle(30, 60);
 		print_info(&equilateral_triangle);

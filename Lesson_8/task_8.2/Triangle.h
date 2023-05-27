@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include "Figure.h"
-//#include "CheckFiguge.h"
+#include "CheckFiguge.h"
 
 
 class Triangle : public Figure

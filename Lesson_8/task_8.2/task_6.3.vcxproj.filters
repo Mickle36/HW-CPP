@@ -62,10 +62,16 @@
     <ClInclude Include="RightTriangle.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="IsoscelesTriangle.h">
+    <ClInclude Include="CheckFiguge.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="EquilateralTriangle.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="IsoscelesTriangle.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Parallelogram.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Quadrilateral.h">
@@ -74,16 +80,10 @@
     <ClInclude Include="Rectangle.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Square.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Parallelogram.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Rhombus.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="CheckFiguge.h">
+    <ClInclude Include="Square.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
