@@ -14,30 +14,30 @@ Fraction::Fraction(int numerator, int denominator)
 
 bool Fraction::operator==(const Fraction& other)
 {
-	return { (numerator_ / denominator_) == (other.numerator_ / other.denominator_) };
+	return { (numerator_ * other.denominator_) == (other.numerator_ * denominator_) };
 }
 
 bool Fraction::operator!=(Fraction other)
 {
-	return { (numerator_ / denominator_) != (other.numerator_ / other.denominator_) };
+	return { (numerator_ * other.denominator_) != (other.numerator_ * denominator_) };
 }
 
 bool Fraction::operator<(Fraction other)
 {
-	return { (numerator_ / denominator_) < (other.numerator_ / other.denominator_) };
+	return { (numerator_ * other.denominator_) < (other.numerator_ * denominator_) };
 }
 
 bool Fraction::operator>(Fraction other)
 {
-	return { (numerator_ / denominator_) > (other.numerator_ / other.denominator_) };
+	return { (numerator_ * other.denominator_) > (other.numerator_ * denominator_) };
 }
 
 bool Fraction::operator<=(Fraction other)
 {
-	return { (numerator_ / denominator_) <= (other.numerator_ / other.denominator_) };
+	return { (numerator_ * other.denominator_) <= (other.numerator_ * denominator_) };
 }
 
 bool Fraction::operator>=(Fraction other)
 {
-	return { (numerator_ / denominator_) >= (other.numerator_ / other.denominator_) };
+	return { (numerator_ * other.denominator_) >= (other.numerator_ * denominator_) };
 }
