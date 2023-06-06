@@ -1,0 +1,4 @@
+cmake_minimum_required(VERSION 3.22.0)
+project(pro_figure)
+add_executable(new_figure main_10.2.cpp Figure.cpp Triangle.cpp IsoscelesTriangle.cpp RightTriangle.cpp EquilateralTriangle.cpp 
+Quadrilateral.cpp Rectangle.cpp Square.cpp Parallelogram.cpp Rhombus.cpp)
