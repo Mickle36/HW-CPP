@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.22.0)
 project(Leave_proj)
 add_library(LeaveDynamicLib SHARED Leave_cls.h Leave_cls.cpp)
+target_compile_definitions(LeaveDynamicLib PRIVATE LEAVERLIBRARYDYNAMIC_EXPORT)
 add_executable(LeaveDynamicExe main_11.3.cpp)
 target_link_libraries(LeaveDynamicExe LeaveDynamicLib)

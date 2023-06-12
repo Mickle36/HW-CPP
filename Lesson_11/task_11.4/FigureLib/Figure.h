@@ -1,12 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
-
-#ifdef LEAVERLIBRARYDYNAMIC_EXPORT
-#define LEAVERLIBRARY_API __declspec(dllexport)
-#else
-#define LEAVERLIBRARY_API __declspec(dllimport)
-#endif // LEAVERLIBRARYDYNAMIC_EXPORT
+#include "macros.h"
 
 class Figure
 {

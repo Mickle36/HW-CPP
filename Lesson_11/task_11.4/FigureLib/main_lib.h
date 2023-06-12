@@ -11,11 +11,6 @@
 #include "Square.h"
 #include "Parallelogram.h"
 #include "Rhombus.h"
-
-#ifdef LEAVERLIBRARYDYNAMIC_EXPORT
-#define LEAVERLIBRARY_API __declspec(dllexport)
-#else
-#define LEAVERLIBRARY_API __declspec(dllimport)
-#endif // LEAVERLIBRARYDYNAMIC_EXPORT
+#include "macros.h"
 
 LEAVERLIBRARY_API void print_info(Figure* on_class);
