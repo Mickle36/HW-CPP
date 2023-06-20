@@ -32,6 +32,8 @@ public:
 
 	int get_time_before_rest() { return this->time_before_rest; }
 
+	double* get_time_rest() { return time_rest; }
+
 	void about_me()
 	{
 		std::cout << "Вид ТС: " << this->get_name_ts() << std::endl;
@@ -39,10 +41,11 @@ public:
 		std::cout << "Время движения до отдыха ТС: " << this->get_time_before_rest() << std::endl;
 	}
 
-	//~GroundVehicle()
-	//{
-	//	delete[] this->time_rest;
-	//}
+	~GroundVehicle()
+	{
+		delete[] this->time_rest;
+	}
+
 	void arr_time_rest(double num_rest)
 	{
 		this->time_rest = new double[num_rest];
@@ -62,10 +65,10 @@ public:
 		this->time_rest[2] = 8;
 	}
 
-	~Camel()
-	{
-		delete[] this->time_rest;
-	}
+	//~Camel()
+	//{
+	//	delete[] this->time_rest;
+	//}
 };
 
 class SpeedCamel : public GroundVehicle
