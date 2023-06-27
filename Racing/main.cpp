@@ -29,6 +29,7 @@ protected:
 	std::string name_ts = "";
 	int* registed_ts = new int [1];
 	int size_registed_ts = 0;
+	int num_schet_choose = 0;
 public:
 	Race(){	}
 	void set_type_ts(int num_type_ts) { this->type_ts = num_type_ts; }
@@ -50,6 +51,10 @@ public:
 	int get_distance_race() { return this->distance_race; }
 
 	int get_size_registed_ts() { return this->size_registed_ts; }
+
+	void set_num_schet_choose(int your_schet_choose) { this->num_schet_choose = your_schet_choose; }
+
+	int get_num_schet_choose() { return this->num_schet_choose; }
 
 	void set_registed_ts(int value)
 	{
@@ -183,7 +188,7 @@ GroundVehicle* add_GroundVehicle()
 	return new GroundVehicle;
 }
 
-Race start_game()
+Race choose_ts()
 {
 	Race new_race;
 	int type_race;
@@ -209,7 +214,7 @@ Race start_game()
 	return new_race;
 }
 
-int schet_choose(Race* on_class)
+void schet_choose(Race* on_class)
 {
 	int num_choose;
 	if (on_class->get_schet_choose() < 2)
@@ -225,6 +230,10 @@ int schet_choose(Race* on_class)
 			std::cout << "Неправельное действие\n";
 			goto loop1;
 		}
+		else
+		{
+			on_class->set_num_schet_choose(num_choose);
+		}
 	}
 	else
 	{
@@ -239,11 +248,13 @@ int schet_choose(Race* on_class)
 			std::cout << "Неправельное действие\n";
 			goto loop2;
 		}
+		else
+		{
+			on_class->set_num_schet_choose(num_choose);
+		}
 	}
 	Sleep(1);
 	std::system("cls");
-
-	return num_choose;
 }
 
 bool check_retry_ts(Race* on_class, int num_choose)
@@ -280,6 +291,7 @@ void choose_ts(Race* on_class)
 	if (chek_choose)
 	{
 		on_class->set_registed_ts(num_choose);
+		on_class->set_schet_choose_1();
 	}
 	else
 	{
@@ -335,30 +347,26 @@ void choose_ts(Race* on_class)
 	std::system("cls");
 }
 
-
-
 void add_ts(Race* on_class)
 {
-	int num_ts = schet_choose(on_class);
+	int num_ts;
 
-	int* new_arr;	
+	int* new_arr;
+
+	schet_choose(on_class);
 
 	while (true)
 	{
-		if (on_class->get_type_ts() == 1)
+		num_ts = on_class->get_num_schet_choose();
+		if (num_ts == 1)
 		{
 			choose_ts(on_class);
 		}
-
-		if (num_ts == 0)
+		else if (num_ts == 2)
 		{
-			schet_choose(on_class);
-		}
-		else if (on_class->get_schet_choose() == 5)
-		{
+			std::cout << "Да начнется игра!!!" << std::endl;
 			break;
 		}
-		on_class->set_schet_choose_1();
 	}
 }
 
@@ -369,7 +377,7 @@ int main()
 	SetConsoleCP(1251);
 
 	Race race;
-	race = start_game();
+	race = choose_ts();
 
 	add_ts(&race);
 
