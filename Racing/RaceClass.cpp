@@ -6,7 +6,7 @@ Race::Race()
 	int type_ts = 0;
 	int distance_race = 0;
 	int schet_choose = 0;
-	std::string name_ts = "";
+	std::string name_type_ts = "";
 	int* registed_ts = new int[1];
 	int size_registed_ts = 0;
 	int num_schet_choose = 0;
@@ -23,9 +23,9 @@ void Race::set_schet_choose_1() { this->schet_choose++; }
 
 int Race::get_schet_choose() { return this->schet_choose; }
 
-void Race::set_name_ts(std::string new_name_ts) { this->name_ts = new_name_ts; }
+void Race::set_name_ts(std::string new_name_ts) { this->name_type_ts = new_name_ts; }
 
-std::string Race::get_name_ts() { return this->name_ts; }
+std::string Race::get_name_ts() { return this->name_type_ts; }
 
 int Race::get_type_ts() { return this->type_ts; }
 

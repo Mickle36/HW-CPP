@@ -133,7 +133,7 @@
     <ClCompile Include="GroundVehicleClass.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RaceClass.cpp" />
-    <ClCompile Include="SpeedCamel.cpp" />
+    <ClCompile Include="SpeedCamelClass.cpp" />
     <ClCompile Include="StartGame.cpp" />
     <ClCompile Include="VehicleClass.cpp" />
   </ItemGroup>
@@ -145,7 +145,7 @@
     <ClInclude Include="CentaurClass.h" />
     <ClInclude Include="GroundVehicleClass.h" />
     <ClInclude Include="RaceClass.h" />
-    <ClInclude Include="SpeedCamel.h" />
+    <ClInclude Include="SpeedCamelClass.h" />
     <ClInclude Include="StartGame.h" />
     <ClInclude Include="VehicleClass.h" />
   </ItemGroup>

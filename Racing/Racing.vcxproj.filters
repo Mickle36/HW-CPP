@@ -33,7 +33,7 @@
     <ClCompile Include="CamelClass.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="SpeedCamel.cpp">
+    <ClCompile Include="SpeedCamelClass.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="AllTerrainBootsClass.cpp">
@@ -59,7 +59,7 @@
     <ClInclude Include="GroundVehicleClass.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="SpeedCamel.h">
+    <ClInclude Include="SpeedCamelClass.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="AllTerrainBootsClass.h">

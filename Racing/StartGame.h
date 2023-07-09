@@ -9,7 +9,7 @@
 #include "RaceClass.h"
 #include "GroundVehicleClass.h"
 #include "CamelClass.h"
-#include "SpeedCamel.h"
+#include "SpeedCamelClass.h"
 #include "AllTerrainBootsClass.h"
 #include "CentaurClass.h"
 
@@ -26,3 +26,7 @@ void add_ts(Race* on_class);
 void ground_ts(Race* on_class, int num_choose);
 
 void air_ts(Race* on_class, int num_choose);
+
+void new_game(Race* on_class);
+
+void start_game();

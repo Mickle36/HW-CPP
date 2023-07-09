@@ -23,15 +23,13 @@ int main()
 	SetConsoleOutputCP(1251);
 	SetConsoleCP(1251);
 
-	Race race;
+	start_game();
+
+	/*Race race;
 	race = choose_ts();
 
-	add_ts(&race);
+	add_ts(&race);*/
 
-	Vehicle** new_ukaz = race.get_ukaz_to_choosed_ts();
+	//Vehicle** new_ukaz = race.get_ukaz_to_choosed_ts();
 
-	for (int i = 0; i < 4; i++)
-	{
-		new_ukaz[i]->about_me();
-	}
 }

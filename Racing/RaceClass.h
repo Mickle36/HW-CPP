@@ -7,7 +7,7 @@ protected:
 	int type_ts;
 	int distance_race;
 	int schet_choose;
-	std::string name_ts;
+	std::string name_type_ts;
 	int* registed_ts;
 	int size_registed_ts;
 	int num_schet_choose;
