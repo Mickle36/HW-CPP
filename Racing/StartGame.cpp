@@ -94,7 +94,7 @@ bool check_retry_ts(Race* on_class, int num_choose)
 }
 
 void choose_ts(Race* on_class)
-{
+{ 
 	int num_choose;
 	bool chek_choose;
 loop:
@@ -122,6 +122,12 @@ loop:
 		Sleep(1);
 		std::system("cls");
 		air_ts(on_class, num_choose);
+	}
+	else if (chek_choose && (on_class->get_type_ts() == 3))
+	{
+		Sleep(1);
+		std::system("cls");
+		all_ts(on_class, num_choose);
 	}
 	else
 	{
@@ -230,16 +236,55 @@ void air_ts(Race* on_class, int num_choose)
 {
 	switch (num_choose)
 	{
-	case 1:
+	case 2:
+		on_class->set_registed_ts(num_choose, new Broom);
+		on_class->set_schet_choose_1();
+		break;
+	case 5:
+		on_class->set_registed_ts(num_choose, new Eagle);
+		on_class->set_schet_choose_1();
+		break;
+	case 7:
+		on_class->set_registed_ts(num_choose, new CarpetPlane);
+		on_class->set_schet_choose_1();
+		break;
+	default:
+		Sleep(1);
+		std::system("cls");
+		std::cout << "Попытка зарегестрировать неправильный тип транспортного средства!\n";
+	}
+}
 
+void all_ts(Race* on_class, int num_choose)
+{
+	switch (num_choose)
+	{
+	case 1:
+		on_class->set_registed_ts(num_choose, new AllTerrainBoots);
+		on_class->set_schet_choose_1();
+		break;
+	case 2:
+		on_class->set_registed_ts(num_choose, new Broom);
+		on_class->set_schet_choose_1();
+		break;
 	case 3:
 		on_class->set_registed_ts(num_choose, new Camel);
 		on_class->set_schet_choose_1();
 		break;
 	case 4:
-
+		on_class->set_registed_ts(num_choose, new Centaur);
+		on_class->set_schet_choose_1();
+		break;
+	case 5:
+		on_class->set_registed_ts(num_choose, new Eagle);
+		on_class->set_schet_choose_1();
+		break;
 	case 6:
 		on_class->set_registed_ts(num_choose, new SpeedCamel);
+		on_class->set_schet_choose_1();
+		break;
+	case 7:
+		on_class->set_registed_ts(num_choose, new CarpetPlane);
 		on_class->set_schet_choose_1();
 		break;
 	default:
@@ -258,11 +303,11 @@ void new_game(Race* on_class)
 	int size_arr_time_rest = 0;
 	std::string name_ts = "";
 	Vehicle** new_ukaz = on_class->get_ukaz_to_choosed_ts();
-	double result = 0.;
+	float result = 0.;
 	int time_rest = 0;
 	int time_before_rest = 0;
 	double col_time_rest = 0.;
-	int* arr_top_ts = new int(size_registed_ts);
+	float* arr_top_ts = new float(size_registed_ts);
 	std::string* arr_top_name_ts = new std::string[size_registed_ts];
 	int temp_top_score_ts = 0;
 	std::string temp_top_name_ts = "";
@@ -279,19 +324,27 @@ void new_game(Race* on_class)
 		time_before_rest = on_class->get_ukaz_to_choosed_ts()[i]->get_time_before_rest();
 		col_time_rest = ceil(static_cast<double>(result / time_before_rest));
 
-		if (result > time_before_rest)
+		if ((result > time_before_rest) && ((on_class->get_type_ts() == 1) || (on_class->get_type_ts() == 3)))
 		{
-			time_rest = on_class->get_ukaz_to_choosed_ts()[i]->get_time_rest()[0];
-			result += time_rest;
-			size_arr_time_rest = on_class->get_ukaz_to_choosed_ts()[i]->get_size_arr_time_rest();
-			for (int j = 1; j < size_arr_time_rest - 1; j++)
-			{
-				time_rest = on_class->get_ukaz_to_choosed_ts()[i]->get_time_rest()[j];
+				std::cout << "GroundClass" << std::endl;
+				time_rest = on_class->get_ukaz_to_choosed_ts()[i]->get_time_rest()[0];
 				result += time_rest;
-			}
+				size_arr_time_rest = on_class->get_ukaz_to_choosed_ts()[i]->get_size_arr_time_rest();
+				for (int j = 1; j < size_arr_time_rest - 1; j++)
+				{
+					time_rest = on_class->get_ukaz_to_choosed_ts()[i]->get_time_rest()[j];
+					result += time_rest;
+				}
 
-			time_rest = on_class->get_ukaz_to_choosed_ts()[i]->get_time_rest()[size_arr_time_rest - 1];
-			result += time_rest * (col_time_rest - 2);
+				time_rest = on_class->get_ukaz_to_choosed_ts()[i]->get_time_rest()[size_arr_time_rest - 1];
+				result += time_rest * (col_time_rest - 2);
+		}
+		else if ((on_class->get_type_ts() == 2) || (on_class->get_type_ts() == 3))
+		{
+				std::cout << "AirClass" << std::endl;
+				on_class->get_ukaz_to_choosed_ts()[i]->set_coef_air_ts(distance_race);
+				float coef_air_ts = on_class->get_ukaz_to_choosed_ts()[i]->get_coef_air_ts();
+				floor(result *= ((coef_air_ts) * 100) / 100);
 		}
 
 		arr_top_ts[i] = result;
@@ -349,6 +402,7 @@ void new_game(Race* on_class)
 		std::cout << "Спасибо за игру!" << std::endl;
 		break;
 	default:
+		Sleep(1);
 		std::system("cls");
 		std::cout << "Неверное действие!\n";
 		goto loop;

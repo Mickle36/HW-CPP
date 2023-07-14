@@ -127,9 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AirVehicleClass.cpp" />
     <ClCompile Include="AllTerrainBootsClass.cpp" />
+    <ClCompile Include="BroomClass.cpp" />
     <ClCompile Include="CamelClass.cpp" />
+    <ClCompile Include="CarpetPlaneClass.cpp" />
     <ClCompile Include="CentaurClass.cpp" />
+    <ClCompile Include="EagleClass.CPP" />
     <ClCompile Include="GroundVehicleClass.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RaceClass.cpp" />
@@ -140,9 +144,11 @@
   <ItemGroup>
     <ClInclude Include="AirVehicleClass.h" />
     <ClInclude Include="AllTerrainBootsClass.h" />
+    <ClInclude Include="BroomClass.h" />
     <ClInclude Include="CamelClass.h" />
     <ClInclude Include="CarpetPlaneClass.h" />
     <ClInclude Include="CentaurClass.h" />
+    <ClInclude Include="EagleClass.h" />
     <ClInclude Include="GroundVehicleClass.h" />
     <ClInclude Include="RaceClass.h" />
     <ClInclude Include="SpeedCamelClass.h" />

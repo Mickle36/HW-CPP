@@ -10,6 +10,8 @@ protected:
 	int size_arr_time_rest;
 	int time_before_rest;
 	float* time_rest;
+	float coef_air_ts;
+	//int type_ts = 0;
 public:
 	Vehicle();
 
@@ -26,5 +28,9 @@ public:
 	virtual void about_me();
 
 	virtual int get_size_arr_time_rest();
+
+	float get_coef_air_ts();
+
+	virtual void set_coef_air_ts(int distance_race);
 	//~Vehicle();
 };

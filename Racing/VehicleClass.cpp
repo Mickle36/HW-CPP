@@ -19,6 +19,10 @@ Vehicle::Vehicle() {}
 
 	int Vehicle::get_size_arr_time_rest() { return 0; }
 
+	float Vehicle::get_coef_air_ts() { return this->coef_air_ts; }
+
+	void Vehicle::set_coef_air_ts(int distance_race) {}
+
 //Vehicle::~Vehicle()
 //	{
 //		//int arr_size = sizeof(this->time_rest) / sizeof(time_rest[0]);

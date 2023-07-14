@@ -12,6 +12,7 @@ protected:
 	int size_registed_ts;
 	int num_schet_choose;
 	Vehicle** ukaz_to_choosed_ts;
+
 public:
 	Race();
 	void set_type_ts(int num_type_ts);

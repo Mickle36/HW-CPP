@@ -12,6 +12,10 @@
 #include "SpeedCamelClass.h"
 #include "AllTerrainBootsClass.h"
 #include "CentaurClass.h"
+#include "AirVehicleClass.h"
+#include "EagleClass.h"
+#include "CarpetPlaneClass.h"
+#include "BroomClass.h"
 
 Race choose_ts();
 
@@ -26,6 +30,8 @@ void add_ts(Race* on_class);
 void ground_ts(Race* on_class, int num_choose);
 
 void air_ts(Race* on_class, int num_choose);
+
+void all_ts(Race* on_class, int num_choose);
 
 void new_game(Race* on_class);
 
