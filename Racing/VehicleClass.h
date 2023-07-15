@@ -11,7 +11,6 @@ protected:
 	int time_before_rest;
 	float* time_rest;
 	float coef_air_ts;
-	//int type_ts = 0;
 public:
 	Vehicle();
 
@@ -32,5 +31,8 @@ public:
 	float get_coef_air_ts();
 
 	virtual void set_coef_air_ts(int distance_race);
-	//~Vehicle();
+
+	int get_type_ts();
+
+	~Vehicle();
 };

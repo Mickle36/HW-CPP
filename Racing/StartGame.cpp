@@ -13,7 +13,7 @@ Race choose_ts()
 	std::cout << "3. Гонка для наземнго и воздушного транспорта" << std::endl;
 	std::cout << "Выберите тип гонки: ";
 	std::cin >> type_race;
-	new_race.set_type_ts(type_race);
+	new_race.set_type_race(type_race);
 	if (type_race == 1) { new_race.set_name_ts("наземного"); }
 	else if (type_race == 2) { new_race.set_name_ts("воздушного"); }
 	else if (type_race == 3) { new_race.set_name_ts("наземнго и воздушного"); }
@@ -111,19 +111,19 @@ loop:
 	std::cin >> num_choose;
 
 	chek_choose = check_retry_ts(on_class, num_choose);
-	if (chek_choose && (on_class->get_type_ts() == 1))
+	if (chek_choose && (on_class->get_type_race() == 1))
 	{
 		Sleep(1);
 		std::system("cls");
 		ground_ts(on_class, num_choose);
 	}
-	else if (chek_choose && (on_class->get_type_ts() == 2))
+	else if (chek_choose && (on_class->get_type_race() == 2))
 	{
 		Sleep(1);
 		std::system("cls");
 		air_ts(on_class, num_choose);
 	}
-	else if (chek_choose && (on_class->get_type_ts() == 3))
+	else if (chek_choose && (on_class->get_type_race() == 3))
 	{
 		Sleep(1);
 		std::system("cls");
@@ -296,7 +296,7 @@ void all_ts(Race* on_class, int num_choose)
 
 void new_game(Race* on_class)
 {
-	int type_ts = on_class->get_type_ts();
+	int type_race = on_class->get_type_race();
 	int size_registed_ts = on_class->get_size_registed_ts();
 	int speed_ts = 0;
 	int distance_race = 0;
@@ -312,6 +312,7 @@ void new_game(Race* on_class)
 	int temp_top_score_ts = 0;
 	std::string temp_top_name_ts = "";
 	int schet = 0;
+	int type_ts = 0;
 
 	std::cout << "Результаты гонки:\n";
 	for (int i = 0; i < size_registed_ts; i++)
@@ -319,14 +320,16 @@ void new_game(Race* on_class)
 		name_ts = new_ukaz[i]->get_name_ts();
 		speed_ts = new_ukaz[i]->get_speed_ts();
 		distance_race = on_class->get_distance_race();
+		type_ts = new_ukaz[i]->get_type_ts();
 
 		result = distance_race / speed_ts;
 		time_before_rest = on_class->get_ukaz_to_choosed_ts()[i]->get_time_before_rest();
 		col_time_rest = ceil(static_cast<double>(result / time_before_rest));
 
-		if ((result > time_before_rest) && ((on_class->get_type_ts() == 1) || (on_class->get_type_ts() == 3)))
+		if ((result > time_before_rest) && ((on_class->get_type_race() == 1) || (on_class->get_type_race() == 3)))
 		{
-				std::cout << "GroundClass" << std::endl;
+			if(type_ts == 1)
+			{
 				time_rest = on_class->get_ukaz_to_choosed_ts()[i]->get_time_rest()[0];
 				result += time_rest;
 				size_arr_time_rest = on_class->get_ukaz_to_choosed_ts()[i]->get_size_arr_time_rest();
@@ -338,13 +341,18 @@ void new_game(Race* on_class)
 
 				time_rest = on_class->get_ukaz_to_choosed_ts()[i]->get_time_rest()[size_arr_time_rest - 1];
 				result += time_rest * (col_time_rest - 2);
+			}
+			else { goto air_ts; }
 		}
-		else if ((on_class->get_type_ts() == 2) || (on_class->get_type_ts() == 3))
+		else if ((on_class->get_type_race() == 2) || (on_class->get_type_race() == 3))
 		{
-				std::cout << "AirClass" << std::endl;
+			air_ts:
+			if (type_ts == 2)
+			{
 				on_class->get_ukaz_to_choosed_ts()[i]->set_coef_air_ts(distance_race);
 				float coef_air_ts = on_class->get_ukaz_to_choosed_ts()[i]->get_coef_air_ts();
 				floor(result *= ((coef_air_ts) * 100) / 100);
+			}
 		}
 
 		arr_top_ts[i] = result;

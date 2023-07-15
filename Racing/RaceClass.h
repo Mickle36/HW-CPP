@@ -4,7 +4,7 @@
 class Race
 {
 protected:
-	int type_ts;
+	int type_race;
 	int distance_race;
 	int schet_choose;
 	std::string name_type_ts;
@@ -15,7 +15,7 @@ protected:
 
 public:
 	Race();
-	void set_type_ts(int num_type_ts);
+	void set_type_race(int num_type_race);
 
 	void set_distance_race(int num_distance_race);
 
@@ -29,7 +29,7 @@ public:
 
 	std::string get_name_ts();
 
-	int get_type_ts();
+	int get_type_race();
 
 	int get_distance_race();
 
@@ -44,4 +44,6 @@ public:
 	int* get_registed_ts();
 
 	Vehicle** get_ukaz_to_choosed_ts();
+
+	~Race();
 };

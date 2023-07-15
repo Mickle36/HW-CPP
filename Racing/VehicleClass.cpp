@@ -23,14 +23,9 @@ Vehicle::Vehicle() {}
 
 	void Vehicle::set_coef_air_ts(int distance_race) {}
 
-//Vehicle::~Vehicle()
-//	{
-//		//int arr_size = sizeof(this->time_rest) / sizeof(time_rest[0]);
-//		std::cout << "Я деструктор ТС: " << this->name_ts << std::endl;
-//		/*for (int i = 0; i < arr_size; i++)
-//		{
-//			std::cout << time_rest[i] << "\n" << std::endl;
-//		}*/
-//
-//		delete[] time_rest;
-//	}
+	int Vehicle::get_type_ts() { return this->type_ts; }
+
+Vehicle::~Vehicle()
+	{
+		delete[] time_rest;
+	}
