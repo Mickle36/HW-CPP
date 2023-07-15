@@ -1,8 +1,12 @@
 #include "StartGame.h"
 #include <math.h>
 
-Race choose_ts()
+void start_game()
 {
+	setlocale(LC_ALL, "ru");
+	SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);
+
 	Race new_race;
 	int type_race;
 	int distance_race;
@@ -34,7 +38,7 @@ Race choose_ts()
 	Sleep(1);
 	std::system("cls");
 
-	return new_race;
+	add_ts(&new_race);
 }
 
 void schet_choose(Race* on_class)
@@ -93,7 +97,7 @@ bool check_retry_ts(Race* on_class, int num_choose)
 	return true;
 }
 
-void choose_ts(Race* on_class)
+void start_game(Race* on_class)
 { 
 	int num_choose;
 	bool chek_choose;
@@ -183,9 +187,9 @@ loop:
 
 void add_ts(Race* on_class)
 {
-	int num_ts;
+	int num_ts = 0;
 
-	int* new_arr;
+	int* new_arr = new int[1] {};
 
 	schet_choose(on_class);
 
@@ -194,7 +198,7 @@ void add_ts(Race* on_class)
 		num_ts = on_class->get_num_schet_choose();
 		if (num_ts == 1)
 		{
-			choose_ts(on_class);
+			start_game(on_class);
 		}
 		else if (num_ts == 2)
 		{
@@ -416,16 +420,4 @@ void new_game(Race* on_class)
 		goto loop;
 		break;
 	}
-}
-
-void start_game()
-{
-	setlocale(LC_ALL, "ru");
-	SetConsoleOutputCP(1251);
-	SetConsoleCP(1251);
-
-	Race race;
-	race = choose_ts();
-
-	add_ts(&race);
 }
