@@ -3,14 +3,14 @@
 
 Race::Race() 
 {
-	int type_race = 0;
-	int distance_race = 0;
-	int schet_choose = 0;
-	std::string name_type_ts = "";
-	int* registed_ts = new int[1];
-	int size_registed_ts = 0;
-	int num_schet_choose = 0;
-	Vehicle** ukaz_to_choosed_ts;
+	this->type_race = 0;
+	this->distance_race = 0;
+	this->schet_choose = 0;
+	this->name_type_ts = "";
+	this->registed_ts = new int[1] {};
+	this->size_registed_ts = 0;
+	this->num_schet_choose = 0;
+	this->ukaz_to_choosed_ts = new Vehicle * [1] {};
 }
 
 void Race::set_type_race(int num_type_race) { this->type_race = num_type_race; }
@@ -39,8 +39,9 @@ int Race::get_num_schet_choose() { return this->num_schet_choose; }
 
 void Race::set_registed_ts(int value, Vehicle* ukaz_to_ts)
 {
-	int* new_arr = new int[size_registed_ts + 1];
-	Vehicle** new_ukaz_to_ts = new Vehicle * [size_registed_ts + 1];
+	//this->size_registed_ts = 0;
+	int* new_arr = new int[this->size_registed_ts + 1];
+	Vehicle** new_ukaz_to_ts = new Vehicle * [this->size_registed_ts + 1];
 	if (this->size_registed_ts == 0)
 	{
 		new_arr[0] = value;
@@ -76,6 +77,6 @@ Vehicle** Race::get_ukaz_to_choosed_ts() { return ukaz_to_choosed_ts; }
 
 Race::~Race()
 {
-	delete[] this->registed_ts;
-	delete[] this->ukaz_to_choosed_ts;
+	delete this->registed_ts;
+	delete this->ukaz_to_choosed_ts;
 }

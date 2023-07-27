@@ -27,5 +27,5 @@ Vehicle::Vehicle() {}
 
 Vehicle::~Vehicle()
 	{
-		delete[] time_rest;
+		delete time_rest;
 	}
